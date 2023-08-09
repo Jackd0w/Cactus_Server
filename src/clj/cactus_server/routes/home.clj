@@ -4,9 +4,13 @@
    [clojure.java.io :as io]
    [cactus-server.middleware :as middleware]
    [ring.util.response]
-   [ring.util.http-response :as response]))
+   [ring.util.http-response :as response]
+   [compojure.core :refer :all]
+   [compojure.route :as route]))
 
-
+(defroutes cactus-route
+  (GET "/")
+  )
 
 (defn home-page [request]
   (layout/render request "home.html" {:docs (-> "docs/docs.md" io/resource slurp)}))
